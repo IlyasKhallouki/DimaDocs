@@ -15,7 +15,8 @@ class DocFetcher:
 
     def fetch_HTML(self):
         response = requests.get(self.url)
-        return response.content
+        if response.ok:
+            self.html = response.content
     
     def parse_HTML(self):
         tb = TreeBuilder()
